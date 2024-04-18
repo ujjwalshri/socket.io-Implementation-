@@ -5,12 +5,11 @@ import { Container, TextField,Button, Typography } from '@mui/material';
 const App = () => {
    const socket = io('http://localhost:3000');
    const [message, setMessage] = useState("");
-   const handleSubmit= (e)=>{
-        q.preventDefault();
-        socket.emit("message",message);
-        setMessage("");
-
-   }
+   const handleSubmit = (e) => {
+    e.preventDefault(); // Corrected typo here
+    socket.emit("message", message);
+    setMessage("");
+}
     useEffect(()=>{
       socket.on("connect", ()=>{
         console.log("connected", socket.id);
